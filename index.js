@@ -2,12 +2,13 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-// Configurar una ruta de ejemplo
+// Servir archivos estáticos desde la carpeta "public"
+app.use(express.static('public'));
+
 app.get('/', (req, res) => {
-  res.send('¡Hola, este es tu primer proyecto con Node.js!');
+  res.sendFile(__dirname + '/public/index.html');
 });
 
-// Iniciar el servidor
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
 });
