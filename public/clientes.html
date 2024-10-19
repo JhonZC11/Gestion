@@ -27,7 +27,7 @@
 
     <div class="container mt-5">
         <div class="form-container p-5">
-            <h3 class="text-center mb-4">Registro de Información del Cliente</h3>
+            <h3 class="text-center mb-4">Registro de Información del Cliente</h3><hr>
             <form id="myForm">
                 <div class="row g-3">
                     <div class="col">
@@ -58,16 +58,18 @@
             </form>
         </div>
     </div>
+
     <div class="container bg-white p-5 mt-5">
-        <h4 class="text-center">Lista de Clientes</h4>
+        <h4 class="text-center pb-3">Lista de Clientes</h4><hr>
         <table class="table table-striped" id="clientesTable">
             <thead>
-                <tr>
+                <tr class="text-center">
                     <th>Cédula</th>
                     <th>Nombres</th>
                     <th>Apellidos</th>
                     <th>Teléfono</th>
                     <th>Dirección</th>
+                    <th>Opciones</th>
                 </tr>
             </thead>
             <tbody id="clientesBody">
@@ -79,6 +81,48 @@
             <button id="nextButton" class="btn btn-secondary">Siguiente</button>
         </div>
     </div>
+
+    <div class="modal fade" id="editCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario de Actualización</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <!-- Formulario para ingresar/actualizar clientes -->
+                    <form id="myFormUpdate">
+                        <div class="mb-3">
+                            <label for="cedula" class="form-label">Cédula</label>
+                            <input type="text" class="form-control" id="cedulaToUpdate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nombres" class="form-label">Nombres</label>
+                            <input type="text" class="form-control" id="nombresToUpdate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="apellidos" class="form-label">Apellidos</label>
+                            <input type="text" class="form-control" id="apellidosToUpdate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Teléfono</label>
+                            <input type="tel" class="form-control" id="telefonoToUpdate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="direccion" class="form-label">Dirección</label>
+                            <input type="text" class="form-control" id="direccionToUpdate" required>
+                        </div>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary" id="submit-button">Ingresar</button>
+                    </form>
+
+                </div>
+                
+              </div>
+            </div>
+    </div>
+    
+    <script src = "js/update.js"></script>
     <script src="js/loadClientes.js"></script>
     <script src = "js/insert.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>

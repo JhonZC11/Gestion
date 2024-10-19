@@ -8,12 +8,17 @@ function loadClientes(page) {
             clientesBody.innerHTML = ''; // Limpiar el cuerpo de la tabla
             data.forEach(cliente => {
                 const row = document.createElement('tr');
+                row.className= "text-center"
                 row.innerHTML = `
                     <td>${cliente.identificacion}</td>
                     <td>${cliente.nombres}</td>
                     <td>${cliente.apellidos}</td>
                     <td>${cliente.telefono}</td>
                     <td>${cliente.direccion}</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editCliente" onclick="editCliente(${cliente.identificacion})">Actualizar</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteCliente(${cliente.identificacion})">Eliminar</button>
+                    </td>
                 `;
                 clientesBody.appendChild(row);
             });

@@ -35,6 +35,11 @@ app.post('/insertar', (req, res) => {
   });
 });
 
+
+
+
+
+
 // Endpoint para obtener todos los registros
 // Endpoint para obtener registros con paginación
 app.get('/clientes', (req, res) => {
@@ -51,22 +56,58 @@ app.get('/clientes', (req, res) => {
     });
 });
 
-// Endpoint para actualizar un registro
-app.put('/actualizar/:identificacion', (req, res) => {
-  const { nombres, apellidos, telefono, direccion } = req.body;
-  const { identificacion } = req.params;
-
-  const sql = `UPDATE clientes SET nombres = ?, apellidos = ?, telefono = ?, direccion = ? WHERE identificacion = ?`;
-  db.run(sql, [nombres, apellidos, telefono, direccion, identificacion], function(err) {
-      if (err) {
-          return res.status(500).json({ message: 'Error al actualizar los datos' });
-      }
-      if (this.changes === 0) {
-          return res.status(404).json({ message: 'Registro no encontrado' });
-      }
-      res.json({ message: 'Registro actualizado exitosamente' });
-  });
+// Asegúrate de tener algo como esto en tu servidor
+app.get('/clientes/:id', (req, res) => {
+    const identificacion = req.params.id;
+    const sql = `SELECT * FROM clientes WHERE identificacion = ?`;
+    db.get(sql, [identificacion], (err, cliente) => {
+        if (err) {
+            return res.status(500).json({ message: 'Error al obtener los datos del cliente' });
+        }
+        res.json(cliente);
+    });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Endpoint para actualizar un registro
+app.put('/actualizar', (req, res) => {
+    const { identificacion, cedula, nombres, apellidos, telefono, direccion } = req.body;
+    const sql = `UPDATE clientes SET identificacion = ?, nombres = ?, apellidos = ?, telefono = ?, direccion = ? WHERE identificacion = ?`;
+    db.run(sql, [cedula, nombres, apellidos, telefono, direccion, identificacion], function(err) {
+        if (err) {
+            return res.status(500).json({ message: 'Error al actualizar los datos' });
+        }
+        res.json({ message: 'Registro actualizado exitosamente' });
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Endpoint para eliminar un registro
 app.delete('/eliminar/:identificacion', (req, res) => {
