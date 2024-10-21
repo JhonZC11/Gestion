@@ -1,4 +1,5 @@
 
+
 document.getElementById('myForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
 
@@ -19,9 +20,9 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
     })
     .then(response => response.json())
     .then(data => {
-        alert(data.message); // Mostrar mensaje de respuesta del servidor
         document.getElementById('myForm').reset(); // Limpiar el formulario
-        location.reload()
+        muestraMensajeGood()
+        loadClientes()
     })
     .catch((error) => {
         console.error('Error:', error);

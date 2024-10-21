@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 
 
 const sqlite3 = require('sqlite3').verbose();
-let currentPage =1
+
 // Middleware
 app.use(bodyParser.json());
 app.use(express.static('public')); // Servir archivos estáticos desde la carpeta 'public'

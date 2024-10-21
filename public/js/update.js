@@ -1,9 +1,5 @@
 
 function editCliente(identificacion) {
-    // Aquí puedes hacer una solicitud para obtener los datos del cliente
-
-    // Endpoint para obtener registros con paginación
-    
  
 // El fetch funciona, no tocar
     fetch(`/clientes/${identificacion}`)
@@ -22,6 +18,7 @@ function editCliente(identificacion) {
             submitButton.onclick = function() {
                 updateCliente(cliente.identificacion); // Actualiza el cliente al enviar el formulario
             };
+            muestraMensajeUpdate()
         })
         .catch((error) => {
             console.error('Error al cargar los datos del cliente:', error);
