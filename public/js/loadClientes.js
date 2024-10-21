@@ -10,13 +10,13 @@ function loadClientes() {
                 const row = document.createElement('tr');
                 row.className= "text-center"
                 row.innerHTML = `
-                    <td>${cliente.identificacion}</td>
+                    
                     <td>${cliente.nombres}</td>
-                    <td>${cliente.apellidos}</td>
+                    
                     <td>${cliente.telefono}</td>
-                    <td>${cliente.direccion}</td>
+                    
                     <td>
-                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editCliente" onclick="editCliente(${cliente.identificacion})">Actualizar</button>
+                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editCliente" onclick="editCliente(${cliente.id})">Actualizar</button>
                         <button class="btn btn-danger btn-sm" onclick="deleteCliente(${cliente.identificacion})">Eliminar</button>
                     </td>
                 `;
@@ -27,9 +27,10 @@ function loadClientes() {
             console.error('Error al cargar los clientes:', error);
         });
 }
-
-
-
+/*
+<td>${cliente.apellidos}</td>
+<td>${cliente.direccion}</td>
+<td>${cliente.identificacion}</td>*/
 // Cargar la lista de clientes al cargar la página
 loadClientes();
 

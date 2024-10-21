@@ -40,26 +40,35 @@
             <h3 class="text-center mb-4">Registro de Información del Cliente</h3><hr>
             <form id="myForm">
                 <div class="row g-3">
+                    
+                    <!--
                     <div class="col">
                         <label for="cedula" class="form-label">Cédula</label>
                         <input type="text" class="form-control" id="cedula" placeholder="Cédula" required>
                     </div>
+                    -->
                     <div class="col">
                         <label for="nombres" class="form-label">Nombres</label>
                         <input type="text" class="form-control" id="nombres" placeholder="Nombres" required>
                     </div>
+                    <!--
                     <div class="col">
                         <label for="apellidos" class="form-label">Apellidos</label>
                         <input type="text" class="form-control" id="apellidos" placeholder="Apellidos" required>
                     </div>
+                    -->
+                    
                     <div class="col">
                         <label for="telefono" class="form-label">Teléfono</label>
                         <input type="text" class="form-control" id="telefono" placeholder="Teléfono" required>
                     </div>
+                    
+                    <!--
                     <div class="col">
                         <label for="direccion" class="form-label">Dirección</label>
                         <input type="text" class="form-control" id="direccion" placeholder="Dirección" required>
                     </div>
+                    -->
                     <div class="col-auto pt-2">
                         <label class="visually-hidden" for="boton-ingresar">Ingresar</label>
                         <button type="submit" class="btn btn-primary mt-4" id="boton-ingresar">Ingresar</button>
@@ -74,22 +83,24 @@
         <table class="table table-striped" id="clientesTable">
             <thead>
                 <tr class="text-center">
-                    <th>Cédula</th>
+                <!--<th>Cédula</th>-->
                     <th>Nombres</th>
-                    <th>Apellidos</th>
+                <!--    <th>Apellidos</th>-->
                     <th>Teléfono</th>
-                    <th>Dirección</th>
+                <!--<th>Dirección</th>-->
                     <th>Opciones</th>
                 </tr>
             </thead>
             <tbody id="clientesBody">
-                <!-- Aquí se llenarán los registros -->
+                <!-- Aquí se llenarán los registros 
             </tbody>
         </table>
+        <!--
         <div class="d-flex justify-content-between">
             <button id="prevButton" class="btn btn-secondary" disabled>Anterior</button>
             <button id="nextButton" class="btn btn-secondary">Siguiente</button>
         </div>
+        -->
     </div>
 
     <div class="modal fade" id="editCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
