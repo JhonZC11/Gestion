@@ -105,10 +105,6 @@ app.put('/actualizar', (req, res) => {
 
 
 
-
-
-
-
 // Endpoint para eliminar un registro
 app.delete('/eliminar/:identificacion', (req, res) => {
   const { identificacion } = req.params;
@@ -124,6 +120,10 @@ app.delete('/eliminar/:identificacion', (req, res) => {
       res.json({ message: 'Registro eliminado exitosamente' });
   });
 });
+
+
+
+
 
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);

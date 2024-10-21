@@ -21,10 +21,11 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
     .then(response => response.json())
     .then(data => {
         document.getElementById('myForm').reset(); // Limpiar el formulario
-        muestraMensajeGood()
         loadClientes()
+        muestraMensajeGood()
     })
     .catch((error) => {
+        muestraMensajeError()
         console.error('Error:', error);
     });
 });
