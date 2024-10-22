@@ -36,6 +36,57 @@ app.post('/insertar', (req, res) => {
 
 
 
+//Productos
+app.post('/insertP', (req, res) => {
+    const {  descripcion, unidadMedida, valorUnidad, stock } = req.body;
+    // SQL para insertar
+    const sql = `INSERT INTO productos ( descripcion, unidadMedida, valorUnitario, stock ) VALUES (?, ?, ?, ?)`;
+    db.run(sql, [ descripcion, unidadMedida, valorUnidad, stock ], function(err) {
+        if (err) {
+            return res.status(500).json({ message: 'Error al insertar los datos' });
+        }
+        res.json({ message: 'Registro insertado exitosamente' });
+    });
+});
+
+
+
+app.get('/productos', (req, res) => {
+    const page = parseInt(req.query.page) || 1; // Número de página, por defecto 1
+    const limit = 10; // Máximo de registros por página
+    const offset = (page - 1) * limit; // Offset para la consulta
+
+    const sql = `SELECT * FROM productos LIMIT ? OFFSET ?`;
+    db.all(sql, [limit, offset], (err, rows) => {
+        if (err) {
+            return res.status(500).json({ message: 'Error al obtener los datos' });
+        }
+        res.json(rows);
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Endpoint para obtener todos los registros
@@ -53,6 +104,22 @@ app.get('/clientes', (req, res) => {
         res.json(rows);
     });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Asegúrate de tener algo como esto en tu servidor
 app.get('/clientes/:id', (req, res) => {
