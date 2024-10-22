@@ -14,8 +14,7 @@ function loadProductos() {
                     <td>${producto.valorUnitario}</td>
                     <td>${producto.stock}</td>                    
                     <td>
-                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editCliente" onclick="editProducto(${producto.id})">Actualizar</button>
-                        <button class="btn btn-danger btn-sm" onclick="deleteProducto(${producto.id})">Eliminar</button>
+                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editProducto" onclick="editProducto(${producto.id})">Actualizar</button>                        
                     </td>
                 `;
                 productosBody.appendChild(row);

@@ -8,7 +8,7 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
     const valorUnidad = parseFloat(document.getElementById('valorUnidad').value);
     const stock = parseFloat(document.getElementById('stock').value);
 
-    alert(stock)
+   
     // Enviar datos al servidor
     fetch('/insertP', {
         method: 'POST',

@@ -65,8 +65,57 @@ app.get('/productos', (req, res) => {
     });
 });
 
+// Asegúrate de tener algo como esto en tu servidor
+app.get('/productos/:id', (req, res) => {
+    const identificacion = req.params.id;
+    const sql = `SELECT * FROM productos WHERE id = ?`;
+    db.get(sql, [identificacion], (err, cliente) => {
+        if (err) {
+            return res.status(500).json({ message: 'Error al obtener los datos del cliente' });
+        }
+        res.json(cliente);
+    });
+});
 
 
+
+
+// Endpoint para actualizar un registro
+app.put('/actualizar', (req, res) => {
+    const { descripcion, unidadMedida, valorUnitario, stock, identificacion  } = req.body;
+    const sql = `UPDATE productos SET descripcion=?, unidadMedida=?, valorUnitario=?, stock=? WHERE id = ?`;
+    db.run(sql, [descripcion, unidadMedida, valorUnitario, stock, identificacion], function(err) {
+        if (err) {
+            return res.status(500).json({ message: 'Error al actualizar los datos' });
+        }
+        res.json({ message: 'Registro actualizado exitosamente' });
+    });
+});
+
+
+
+
+
+
+
+
+/* Endpoint para eliminar un registro
+app.delete('/eliminar/:identificacion', (req, res) => {
+    const { identificacion } = req.params;
+  
+    const sql = `DELETE FROM productos WHERE id = ?`;
+    db.run(sql, identificacion, function(err) {
+        if (err) {
+            return res.status(500).json({ message: 'Error al eliminar los datos' });
+        }
+        if (this.changes === 0) {
+            return res.status(404).json({ message: 'Registro no encontrado' });
+        }
+        res.json({ message: 'Registro eliminado exitosamente' });
+    });
+  });*/
+  
+  
 
 
 
