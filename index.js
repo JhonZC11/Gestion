@@ -23,18 +23,16 @@ app.get('/', (req, res) => {
 
 // Endpoint para insertar datos
 app.post('/insertar', (req, res) => {
-  const { cedula, nombres, apellidos, telefono, direccion } = req.body;
-
+  const {  nombre,  telefono } = req.body;
   // SQL para insertar
-  const sql = `INSERT INTO clientes (identificacion, nombres, apellidos, telefono, direccion) VALUES (?, ?, ?, ?, ?)`;
-  db.run(sql, [cedula, nombres, apellidos, telefono, direccion], function(err) {
+  const sql = `INSERT INTO clientes ( nombre,  telefono ) VALUES (?, ?)`;
+  db.run(sql, [ nombre,  telefono ], function(err) {
       if (err) {
           return res.status(500).json({ message: 'Error al insertar los datos' });
       }
       res.json({ message: 'Registro insertado exitosamente' });
   });
 });
-
 
 
 
@@ -59,7 +57,7 @@ app.get('/clientes', (req, res) => {
 // Asegúrate de tener algo como esto en tu servidor
 app.get('/clientes/:id', (req, res) => {
     const identificacion = req.params.id;
-    const sql = `SELECT * FROM clientes WHERE identificacion = ?`;
+    const sql = `SELECT * FROM clientes WHERE id = ?`;
     db.get(sql, [identificacion], (err, cliente) => {
         if (err) {
             return res.status(500).json({ message: 'Error al obtener los datos del cliente' });
@@ -87,9 +85,9 @@ app.get('/clientes/:id', (req, res) => {
 
 // Endpoint para actualizar un registro
 app.put('/actualizar', (req, res) => {
-    const { identificacion, cedula, nombres, apellidos, telefono, direccion } = req.body;
-    const sql = `UPDATE clientes SET identificacion = ?, nombres = ?, apellidos = ?, telefono = ?, direccion = ? WHERE identificacion = ?`;
-    db.run(sql, [cedula, nombres, apellidos, telefono, direccion, identificacion], function(err) {
+    const { identificacion,  nombres,  telefono,  } = req.body;
+    const sql = `UPDATE clientes SET nombre = ?,  telefono = ? WHERE id = ?`;
+    db.run(sql, [nombres, telefono, identificacion], function(err) {
         if (err) {
             return res.status(500).json({ message: 'Error al actualizar los datos' });
         }
@@ -109,7 +107,7 @@ app.put('/actualizar', (req, res) => {
 app.delete('/eliminar/:identificacion', (req, res) => {
   const { identificacion } = req.params;
 
-  const sql = `DELETE FROM clientes WHERE identificacion = ?`;
+  const sql = `DELETE FROM clientes WHERE id = ?`;
   db.run(sql, identificacion, function(err) {
       if (err) {
           return res.status(500).json({ message: 'Error al eliminar los datos' });

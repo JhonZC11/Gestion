@@ -11,13 +11,13 @@ function loadClientes() {
                 row.className= "text-center"
                 row.innerHTML = `
                     
-                    <td>${cliente.nombres}</td>
+                    <td>${cliente.nombre}</td>
                     
                     <td>${cliente.telefono}</td>
                     
                     <td>
                         <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editCliente" onclick="editCliente(${cliente.id})">Actualizar</button>
-                        <button class="btn btn-danger btn-sm" onclick="deleteCliente(${cliente.identificacion})">Eliminar</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteCliente(${cliente.id})">Eliminar</button>
                     </td>
                 `;
                 clientesBody.appendChild(row);

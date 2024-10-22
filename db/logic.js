@@ -5,15 +5,11 @@ db.serialize(() => {
   db.run(`
     CREATE TABLE IF NOT EXISTS clientes (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      identificacion  TEXT NOT NULL,
-      nombres TEXT NOT NULL,
-      apellidos TEXT NOT NULL,
-      telefono TEXT  NOT NULL,
-      direccion TEXT,
-      UNIQUE(identificacion)
+      nombre TEXT NOT NULL,
+      telefono TEXT NOT NULL
     )`, (err) => {
     if (err) {
-      console.error('Error al crear la tabla:', err.message);
+      console.error('Error al crear la tabla:');
     } else {
       console.log('Tabla "usuarios" creada o ya existente');
     }
