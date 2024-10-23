@@ -15,9 +15,9 @@ const controllerProductos = {
     },
     // Endpoint para actualizar un producto
     updateProducto: (req, res) => {
-        const { descripcion, unidadMedida, valorUnidad, stock, id } = req.body;
+        const { descripcion, unidadMedida, valorUnitario, stock, id } = req.body;
         const sql = `UPDATE productos SET descripcion = ?, unidadMedida = ?, valorUnitario = ?, stock = ? WHERE id = ?`;
-        db.run(sql, [descripcion, unidadMedida, valorUnidad, stock, id], function (err) {
+        db.run(sql, [descripcion, unidadMedida, valorUnitario, stock, id], function (err) {
             if (err) {
                 return res.status(500).json({ message: 'Error al actualizar los datos', error: err.message });
             }

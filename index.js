@@ -28,9 +28,9 @@ app.get('/', (req, res) => {
 // Rutas usando el objeto 'productosController'
 app.post('/insertP', controllerProductos.insertProducto);
 app.put('/updateP', controllerProductos.updateProducto);
-app.delete('/deleteP', controllerProductos.deleteProducto);
 app.get('/productos', controllerProductos.getProductos);
 app.get('/productos/:id', controllerProductos.getProductoById);
+app.delete('/deleteP/:id', controllerProductos.deleteProducto);
 
 
 

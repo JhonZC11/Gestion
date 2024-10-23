@@ -1,6 +1,6 @@
-function editProducto(identificacion) {
+function editProducto(id) {
     // El fetch funciona, no tocar
-    fetch(`/productos/${identificacion}`)
+    fetch(`/productos/${id}`)
         .then(response => response.json())
         .then(producto => {
             // Llenar el formulario con los datos del cliente
@@ -12,7 +12,7 @@ function editProducto(identificacion) {
             const submitButton = document.getElementById('submit-button');
             submitButton.innerText = 'Actualizar';
             submitButton.onclick = function() {
-                updateProducto(identificacion); // Actualiza el cliente al enviar el formulario
+                updateProducto(id); // Actualiza el cliente al enviar el formulario
             };
         })
         .catch((error) => {
@@ -20,18 +20,18 @@ function editProducto(identificacion) {
         });
 }
 
-function updateProducto(identificacion) {
+function updateProducto(id) {
     const descripcion = document.getElementById('descripcionToUpdate').value;
     const unidadMedida =document.getElementById('unidadMedidaToUpdate').value;
     const valorUnitario = document.getElementById('valorUnidadToUpdate').value;
     const stock =  document.getElementById('stockToUpdate').value;
 
-    fetch(`/actualizar`, {
+    fetch(`/updateP`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ descripcion, unidadMedida, valorUnitario, stock, identificacion }) // Asegúrate de enviar 'identificacion'
+        body: JSON.stringify({ descripcion, unidadMedida, valorUnitario, stock, id }) // Asegúrate de enviar 'identificacion'
     })
     .then(response => response.json())
     .then(data => {
