@@ -1,6 +1,6 @@
 function deleteProducto(id) {
     if (confirm('¿Estás seguro de que deseas eliminar este cliente?')) {
-        fetch(`/eliminar/${id}`, {
+        fetch(`/deleteP/${id}`, {
             method: 'DELETE',
         })
         .then(response => response.json())

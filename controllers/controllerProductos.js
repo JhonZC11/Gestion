@@ -27,7 +27,7 @@ const controllerProductos = {
 
     // Endpoint para eliminar un producto
     deleteProducto: (req, res) => {
-        const { id } = req.body;
+        const { id } = req.params;
         const sql = `DELETE FROM productos WHERE id = ?`;
         db.run(sql, [id], function (err) {
             if (err) {
