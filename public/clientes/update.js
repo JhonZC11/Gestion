@@ -23,7 +23,7 @@ function updateCliente(identificacion) {
     const nombres = document.getElementById('nombresToUpdate').value;
     const telefono = document.getElementById('telefonoToUpdate').value;
 
-    fetch(`/actualizar`, {
+    fetch(`/updateC`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'

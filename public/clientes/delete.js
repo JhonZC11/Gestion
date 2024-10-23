@@ -1,6 +1,6 @@
 function deleteCliente(identificacion) {
     if (confirm('¿Estás seguro de que deseas eliminar este cliente?')) {
-        fetch(`/eliminar/${identificacion}`, {
+        fetch(`/deleteC/${identificacion}`, {
             method: 'DELETE',
         })
         .then(response => response.json())

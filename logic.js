@@ -1,4 +1,4 @@
-const db = require('./database.js');
+const db = require('./db/database.js');
 
 // Crear una tabla de ejemplo llamada "usuarios"
 db.serialize(() => {

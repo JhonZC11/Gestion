@@ -9,7 +9,7 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
     const telefono = document.getElementById('telefono').value;
 
     // Enviar datos al servidor
-    fetch('/insertar', {
+    fetch('/insertC', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
