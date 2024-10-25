@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 
 const controllerProductos = require('./controllers/controllerProductos');
 const controllerClientes = require('./controllers/controllerClientes')
+const controllerVenta = require('./controllers/controllerVenta.js');
 
 const sqlite3 = require('sqlite3').verbose();
 
@@ -41,6 +42,9 @@ app.get('/clientes', controllerClientes.getClientes);
 app.get('/clientes/:id', controllerClientes.getClienteById);
 app.delete('/deleteC/:id', controllerClientes.deleteCliente);
 
+
+//Rutas usando el objeto controllerVenta
+app.post('/insertV', controllerVenta.insertVenta);
 
 
 

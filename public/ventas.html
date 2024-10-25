@@ -21,7 +21,7 @@
             border-radius: 8px;
         }
         .total{
-            width: 110px;
+            width:80px;
             position: relative;
             left: 85%;
         }
@@ -32,10 +32,10 @@
     <div id="navbar-placeholder"></div>
 
     <div class="container bg-white p-5 mt-5 w-50">
-        <div class="row text-center m-5">
+        <div class="row text-center m-3">
             <h1>Registrar Venta</h1>
         </div>
-        <form>
+        <form id="ventaForm">
             <div class="row">
                 <div class="col">
                     <div class="mb-3">
@@ -56,13 +56,12 @@
             </div>
             <div class="mb-5">
                     <table class="table text-center">
-                        <thead>
-                            <th>Item</th>
+                        <thead>                            
                             <th>Descripcion</th>
                             <th>Unidad Medida</th>
                             <th>Valor Unitario</th>
                             <th>Stock</th>
-                            <th>Cantidad a comprar</th>
+                            <th>Cantidad</th>
                             <th>Valor Compra</th>
                         </thead>
                         <tbody id="productosArea">
@@ -71,47 +70,20 @@
                         
                     </table>
                     <div class="row">
-                        <input type="number" id="totalPurchase" class="form-control total" readonly>
+                        <input type="number" id="totalPurchase" class="form-control total" placeholder="Valor Total" readonly>
                     </div>
             </div>
             <div class="position-relative">
                 <div class="position-absolute bottom-1 end-0">
-                    
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
         </form>
     </div>
-    <script>
-        // Función para calcular el valor total de una fila
-        function calculaT(inp, id, valorUnitario){
-            let cantidad = inp.value;
-            let valorCompra = cantidad * valorUnitario;
-            document.getElementById(id).value = valorCompra;
-            totalCompra()
-        }
-        function totalCompra() {
-            let total = 0;
-            let inpValorTotal = document.getElementById('totalPurchase');
-            let totales = document.getElementsByClassName('value-purchase');
-            
-            for (let index = 0; index < totales.length; index++) {
-                // Asegúrate de que cada valor sea tratado como número
-                let valor = parseFloat(totales[index].value);
-                if (!isNaN(valor)) {
-                    total += valor; // Sumar los valores de compra
-                }
-            }
-
-            // Asigna el total al input para mostrar el valor
-            inpValorTotal.value = total.toFixed(0); // Muestra el total con dos decimales
-        }
-
-    </script>
-
 
 
     <script src="ventas/listarProductos.js"></script>
+    <script src="ventas/insert.js"></script>
     <!-- Incluir Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
 </body>
