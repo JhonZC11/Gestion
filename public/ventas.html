@@ -88,9 +88,23 @@
             let cantidad = inp.value;
             let valorCompra = cantidad * valorUnitario;
             document.getElementById(id).value = valorCompra;
-            alert(id)
-            alert(valorUnitario)
-            alert(cantidad)
+            totalCompra()
+        }
+        function totalCompra() {
+            let total = 0;
+            let inpValorTotal = document.getElementById('totalPurchase');
+            let totales = document.getElementsByClassName('value-purchase');
+            
+            for (let index = 0; index < totales.length; index++) {
+                // Asegúrate de que cada valor sea tratado como número
+                let valor = parseFloat(totales[index].value);
+                if (!isNaN(valor)) {
+                    total += valor; // Sumar los valores de compra
+                }
+            }
+
+            // Asigna el total al input para mostrar el valor
+            inpValorTotal.value = total.toFixed(0); // Muestra el total con dos decimales
         }
 
     </script>
