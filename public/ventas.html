@@ -15,9 +15,89 @@
         
     <script src = "js/structure.js"></script>
     <script src = "js/toast.js"></script>
+    <style>
+        .container{
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .total{
+            width: 110px;
+            position: relative;
+            left: 85%;
+        }
+    </style>
 </head>
 <body>
+
     <div id="navbar-placeholder"></div>
+
+    <div class="container bg-white p-5 mt-5 w-50">
+        <div class="row text-center m-5">
+            <h1>Registrar Venta</h1>
+        </div>
+        <form>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="nombreCliente" class="form-label">Nombre Cliente</label>
+                        <input type="text" class="form-control" id="nombreCliente" aria-describedby="text"> 
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="telefonoCliente" class="form-label">Telefono Cliente</label>
+                        <input type="text" class="form-control" id="telefonoCliente" aria-describedby="text"> 
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="notas" class="form-label">Notas</label>
+                <input type="text" class="form-control" id="notas">
+            </div>
+            <div class="mb-5">
+                    <table class="table text-center">
+                        <thead>
+                            <th>Item</th>
+                            <th>Descripcion</th>
+                            <th>Unidad Medida</th>
+                            <th>Valor Unitario</th>
+                            <th>Stock</th>
+                            <th>Cantidad a comprar</th>
+                            <th>Valor Compra</th>
+                        </thead>
+                        <tbody id="productosArea">
+                            
+                        </tbody>
+                        
+                    </table>
+                    <div class="row">
+                        <input type="number" id="totalPurchase" class="form-control total" readonly>
+                    </div>
+            </div>
+            <div class="position-relative">
+                <div class="position-absolute bottom-1 end-0">
+                    
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        // Función para calcular el valor total de una fila
+        function calculaT(inp, id, valorUnitario){
+            let cantidad = inp.value;
+            let valorCompra = cantidad * valorUnitario;
+            document.getElementById(id).value = valorCompra;
+            alert(id)
+            alert(valorUnitario)
+            alert(cantidad)
+        }
+
+    </script>
+
+
+
+    <script src="ventas/listarProductos.js"></script>
     <!-- Incluir Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
 </body>

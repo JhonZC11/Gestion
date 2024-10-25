@@ -30,4 +30,3 @@ function loadProductos() {
 <td>${cliente.identificacion}</td>*/
 // Cargar la lista de clientes al cargar la página
 loadProductos();
-
