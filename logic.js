@@ -35,16 +35,29 @@ db.serialize(() => {
     db.run(`
       CREATE TABLE IF NOT EXISTS facturasVenta (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        id_productos INTEGER NOT NULL,
-        id_cliente INTEGER NOT NULL,
-        unidadMedida TEXT NOT NULL, 
-        valorUnitario FLOAT NOT NULL,
-        fecha TIMESTAMP,
+        id_venta INTEGER NOT NULL,
+        cliente TEXT NOT NULL, 
         valorTotal FLOAT NOT NULL,
-        tipoPago TEXT NOT NULL,
-        medioPago TEXT NOT NULL,
-        foreign key(id_productos) references productos(id),
-        foreign key(id_cliente) references clientes(id)
+        foreign key(id_venta) references detalleVenta(id)
+    )`, (err) => {
+      if (err) {
+        console.error('Error al crear la tabla:', err.message);
+      } else {
+        console.log('Tabla "faturasVentas" creada o ya existente');
+      }
+    });
+  });
+  db.serialize(() => {
+    db.run(`
+      CREATE TABLE IF NOT EXISTS detalleVenta (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        id_productos INTEGER NOT NULL,
+        valorUnitario FLOAT NOT NULL,
+        cliente TEXT NOT NULL, 
+        cantidad FLOAT NOT NULL,
+        fecha current_timestamp,
+        foreign key(id_productos) references productos(id)
+        foreign key(valorUnitario) references productos(valorUnitario)
     )`, (err) => {
       if (err) {
         console.error('Error al crear la tabla:', err.message);
