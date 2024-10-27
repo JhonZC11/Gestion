@@ -52,12 +52,9 @@ db.serialize(() => {
       CREATE TABLE IF NOT EXISTS detalleVenta (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         id_productos INTEGER NOT NULL,
-        valorUnitario FLOAT NOT NULL,
-        cliente TEXT NOT NULL, 
         cantidad FLOAT NOT NULL,
         fecha current_timestamp,
         foreign key(id_productos) references productos(id)
-        foreign key(valorUnitario) references productos(valorUnitario)
     )`, (err) => {
       if (err) {
         console.error('Error al crear la tabla:', err.message);

@@ -10,32 +10,34 @@ const controllerVenta = {
         console.log('Cantidad:', cantidad);
         console.log('Total Purchase:', totalPurchase);
         // Inserta la venta y obtén el ID de la venta insertada
-        const sqlVenta = `INSERT INTO facturasVenta (cliente, valorTotal) VALUES (?, ?)`;
-        db.run(sqlVenta, [cliente, totalPurchase], function(err) {
-            if (err) {
-                return res.status(500).json({ message: 'Error al insertar la venta' });
-            }
-            console.log("Estoy aca")
-            const id_venta = this.lastID;
-            console.log("id venta: ", id_venta) // Obtén el ID de la venta recién insertada
-            
-            // Ahora inserta los detalles de la venta (producto y cantidad)
-            const sqlDetalle = `INSERT INTO detalleVenta (id_venta, id_producto, cantidad) VALUES (?, ?, ?)`;
-            const stmt = db.prepare(sqlDetalle);
-    
-            // Iterar sobre los arrays de productos y cantidades para insertar cada detalle
-            id_producto.forEach((productoID, index) => {
-                const cantidadProducto = cantidad[index];
-                stmt.run(id_venta, productoID, cantidadProducto, (err) => {
-                    if (err) {
-                        console.error('Error al insertar detalle:', err);
-                    }
-                });
+        const sqlDetalle = `INSERT INTO detalleVenta (id_productos, cantidad) VALUES (?, ?)`;
+        const stmt = db.prepare(sqlDetalle);
+        id_producto.forEach((productoID, index) => {
+            const cantidadProducto = cantidad[index];
+            stmt.run( productoID, cantidadProducto, (err) => {
+                if (err) {
+                    console.error('Error al insertar detalle:', err);
+                }
             });
-    
-            stmt.finalize();
-            res.json({ message: 'Venta y detalles registrados exitosamente' });
         });
+        const sqlId = 'SELECT last_insert_rowid()';
+        db.get(sqlId, (err, row) =>{ 
+            const lastID = row['last_insert_rowid()']; // Asignar el valor del último ID
+            console.log('Último ID obtenido:', lastID);
+            insertFactura(lastID)
+        })
+        console.log()
+        function insertFactura(lastId){
+            const sqlVenta = `INSERT INTO facturasVenta (id_venta, cliente, valorTotal ) VALUES (?, ?, ?)`;
+            db.run(sqlVenta, [lastId, cliente, totalPurchase], function(err) {
+                if (err) {
+                    return res.status(500).json({ message: 'Error al insertar la venta' });
+                }
+    
+                stmt.finalize();
+                res.json({ message: 'Venta y detalles registrados exitosamente' });
+            });
+        }  
     }
 }
 module.exports = controllerVenta;
