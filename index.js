@@ -15,7 +15,8 @@ app.use(bodyParser.json());
 app.use(express.static('public')); // Servir archivos estáticos desde la carpeta 'public'
 
 // Conectar a la base de datos SQLite
-const db = require('./db/database')
+const db = require('./db/database');
+const controllerDeudas = require('./controllers/controllerDeudas.js');
 
 // Servir archivos estáticos desde la carpeta "public"
 app.use(express.static('public'));
@@ -46,6 +47,7 @@ app.delete('/deleteC/:id', controllerClientes.deleteCliente);
 //Rutas usando el objeto controllerVenta
 app.post('/insertV', controllerVenta.insertVenta);
 
+app.get('/deudas', controllerDeudas.getDeudas)
 
 
 app.listen(port, () => {

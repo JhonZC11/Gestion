@@ -65,12 +65,23 @@ function totalCompra() {
     inpValorTotal.value = total.toFixed(0); // Muestra el total con dos decimales
 }
 
+function netoCompra(){
+    let total = document.getElementById("totalPurchase").value
+    let paga = document.getElementById("paga").value
+    let netoInput = document.getElementById("debe")
+    let neto = total - paga
+    netoInput.value=neto
+}
+let paga = document.getElementById("paga").addEventListener('change', function(){
+    netoCompra()
+})
+
 document.getElementById('ventaForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
 
     // Capturar los valores de los campos que ahora solo son 'nombre' y 'telefono'
     const cliente = document.getElementById('nombreCliente').value;
-    const totalPurchase = parseFloat(document.getElementById('totalPurchase').value);
+    const totalPurchase = parseFloat(document.getElementById('debe').value);
     const id_producto = selectedItems
     const cantidad = selectedCantidad// Array de IDs de productos
    // Array de cantidades

@@ -21,9 +21,9 @@
             border-radius: 8px;
         }
         .total{
-            width:80px;
+            width:100px;
             position: relative;
-            left: 85%;
+            left: 83%;
         }
     </style>
 </head>
@@ -69,8 +69,29 @@
                         </tbody>
                         
                     </table>
-                    <div class="row">
-                        <input type="number" id="totalPurchase" class="form-control total" placeholder="Valor Total" readonly>
+                    <div class="row mt-1">
+                        <div class="col-auto">
+                            <label for="">Total</label>
+                        </div>
+                        <div class="col">
+                            <input type="number" id="totalPurchase" class="form-control total" placeholder="Valor Total" readonly>
+                        </div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-auto">
+                            <label for="">Paga</label>
+                        </div>
+                        <div class="col">
+                            <input type="number" id="paga" class="form-control total">
+                        </div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-auto">
+                            <label for="">Debe</label>
+                        </div>
+                        <div class="col">
+                            <input type="number" id="debe" class="form-control total" readonly>
+                        </div>
                     </div>
             </div>
             <div class="position-relative">

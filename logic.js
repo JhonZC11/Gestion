@@ -53,7 +53,7 @@ db.serialize(() => {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         id_productos INTEGER NOT NULL,
         cantidad FLOAT NOT NULL,
-        fecha current_timestamp,
+        fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
         foreign key(id_productos) references productos(id)
     )`, (err) => {
       if (err) {
