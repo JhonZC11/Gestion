@@ -12,12 +12,13 @@ const controllerDeudas = {
         });
     },
     getDeudas:(req, res) => {    
-        const sql = `SELECT cliente, valorTotal FROM facturasVenta WHERE valorTotal > 0;`;
+        const sql = `SELECT fv.id_venta, fv.cliente, fv.valorTotal, dv.id_productos, dv.fecha, dv.cantidad, p.descripcion AS nombre_producto, p.valorUnitario AS precio_producto FROM facturasVenta fv JOIN detalleVenta dv ON fv.id_venta = dv.id JOIN productos p ON dv.id_productos = p.id WHERE fv.valorTotal > 0;`;
         db.all(sql, (err, rows) => {
             if (err) {
                 return res.status(500).json({ message: 'Error al obtener los datos' });
             }
             res.json(rows);
+            console.log(rows)
         });
     },
     getDeuda:(req, res) => {

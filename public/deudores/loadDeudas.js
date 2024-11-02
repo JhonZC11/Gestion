@@ -11,9 +11,15 @@ function loadDeudas() {
                 row.className= "text-center"
                 row.innerHTML = `
                     
-                    <td>${cliente.cliente}</td>
-                    
-                    <td>${cliente.valorTotal}</td>
+                <td>${cliente.fecha}</td>        
+                <td>${cliente.cliente}</td>
+                <td>${cliente.nombre_producto}</td>
+                <td>${cliente.precio_producto}</td>
+                <td>${cliente.cantidad}</td>
+                <td>${cliente.valorTotal}</td>
+                <td>
+                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editCliente" onclick="editCliente(${cliente.id})">Actualizar</button>    
+                </td>
 `;
                 clientesBody.appendChild(row);
             });
