@@ -18,7 +18,7 @@ function loadDeudas() {
                 <td>${cliente.cantidad}</td>
                 <td>${cliente.valorTotal}</td>
                 <td>
-                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editCliente" onclick="editCliente(${cliente.id})">Actualizar</button>    
+                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editDeuda" onclick="editDeuda(${cliente.id})">Actualizar</button>    
                 </td>
 `;
                 clientesBody.appendChild(row);

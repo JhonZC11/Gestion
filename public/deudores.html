@@ -49,10 +49,40 @@
         -->
     </div>
 
+    <div class="modal fade" id="editDeuda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario de Actualización</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <!-- Formulario para ingresar/actualizar clientes -->
+                <form id="myFormUpdate">
 
+                    <div class="mb-3">
+                        <label for="deud" class="form-label">Debe</label>
+                        <input type="text" class="form-control" id="deuda" required readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="new" class="form-label">Nuevo Saldo</label>
+                        <input type="tel" class="form-control" id="new" required>
+                    </div>
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary" id="submit-button">Ingresar</button>
+                </form>
+
+            </div>
+            
+          </div>
+        </div>
+</div>
 
 
     <!-- Incluir Bootstrap JS -->
+    <script src="deudores/updateDeuda.js"></script>
     <script src="deudores/loadDeudas.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
 </body>

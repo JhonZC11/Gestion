@@ -47,7 +47,9 @@ app.delete('/deleteC/:id', controllerClientes.deleteCliente);
 //Rutas usando el objeto controllerVenta
 app.post('/insertV', controllerVenta.insertVenta);
 
+app.put('/updateD', controllerDeudas.updateDeuda);
 app.get('/deudas', controllerDeudas.getDeudas)
+app.get('/deudas/:id', controllerDeudas.getDeudaById)
 
 
 app.listen(port, () => {
