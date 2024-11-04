@@ -1,4 +1,34 @@
 
+function applyFilters() {
+    const fechaFilter = document.getElementById('filterFecha').value.toLowerCase();
+    const nombreFilter = document.getElementById('filterNombre').value.toLowerCase();
+    const productoFilter = document.getElementById('filterProducto').value.toLowerCase();
+
+    const table = document.getElementById('deudasbody');
+    const rows = table.getElementsByTagName('tr');
+
+    for (let i = 0; i < rows.length; i++) {
+        const fecha = rows[i].getElementsByTagName('td')[0].textContent.toLowerCase();
+        const nombre = rows[i].getElementsByTagName('td')[1].textContent.toLowerCase();
+        const producto = rows[i].getElementsByTagName('td')[2].textContent.toLowerCase();
+
+        // Verificar si la fila coincide con los filtros
+        const fechaMatch = fecha.includes(fechaFilter);
+        const nombreMatch = nombre.includes(nombreFilter);
+        const productoMatch = producto.includes(productoFilter);
+
+        // Mostrar u ocultar la fila
+        if (fechaMatch && nombreMatch && productoMatch) {
+            rows[i].style.display = '';
+        } else {
+            rows[i].style.display = 'none';
+        }
+    }
+}
+
+
+
+
 
 function loadDeudas() {
     fetch(`/deudas`)
